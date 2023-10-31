@@ -17,6 +17,13 @@ static volatile long long end_time;
 
 bool state = false;
 
+long long timeInMS(void) {
+    struct timeval tv;
+
+    gettimeofday(&tv,NULL);
+    return (((long long)tv.tv_sec)*1000)+(tv.tv_usec/1000);
+}
+
 //Interrupt to calculate the width of the black line
 void irline_callback(uint gpio, uint32_t events)
 {
