@@ -17,7 +17,7 @@ static volatile long long end_time;
 
 bool state = false;
 
-long long timeInMS(void) {
+long long getTimeMS(void) {
     struct timeval tv;
 
     gettimeofday(&tv,NULL);
