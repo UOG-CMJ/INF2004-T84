@@ -1,14 +1,5 @@
-add_executable(motor
-        motor.c
-        )
-
+add_library(motor motor.h motor.c)
 # pull in common dependencies and additional pwm hardware support
-target_link_libraries(motor pico_stdlib hardware_pwm)
-
-# create map/bin/hex file etc.
-pico_add_extra_outputs(motor)
-
-# add url via pico_set_program_url
-example_auto_set_url(motor)
-
-pico_enable_stdio_usb(motor 1)
+target_link_libraries(motor pico_stdlib hardware_gpio hardware_timer hardware_pwm)
+target_link_libraries(motor magnometer)
+target_include_directories(motor PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")

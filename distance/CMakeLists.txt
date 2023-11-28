@@ -1,5 +1,5 @@
-if (NOT PICO_NO_HARDWARE)
-    add_subdirectory(ultrasonic)
-    add_subdirectory(readCM)
+add_library(pico_ultrasonic ultrasonic.h ultrasonic.c)
 
-endif ()
+target_link_libraries(pico_ultrasonic pico_stdlib hardware_gpio hardware_timer)
+
+target_include_directories(pico_ultrasonic PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")
